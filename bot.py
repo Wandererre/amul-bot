@@ -157,6 +157,14 @@ async def check_once(config):
         return []
 
     display_product_table(products, config)
+
+    # Trigger alerts for matched targets in stock (essential for GitHub Actions cloud runs!)
+    matched = filter_watched_products(products, config)
+    for product, is_target in matched:
+        if product.get("in_stock"):
+            console.print(f"[bold green]🎯 TARGET IN STOCK: {product.get('name')}[/bold green]")
+            trigger_all_alerts(product, config)
+
     return products
 
 async def monitor_loop(config):
