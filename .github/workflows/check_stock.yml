@@ -1,0 +1,31 @@
+name: Amul Stock 24/7 Monitor
+
+on:
+  schedule:
+    # Runs every 5-10 minutes 24/7
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  check-stock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install playwright rich requests
+          python -m playwright install --with-deps chromium
+
+      - name: Run Stock Check
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASS: ${{ secrets.GMAIL_APP_PASS }}
+        run: |
+          python bot.py --check
