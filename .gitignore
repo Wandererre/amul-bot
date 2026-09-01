@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Playwright & Local Browser Profile (never push login session/cookies to git!)
+amul_profile/
+.cache/
+
+# Environment secrets
+.env
+.env.local
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# OS specific
+Thumbs.db
+Desktop.ini
+.DS_Store
