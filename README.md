@@ -46,10 +46,11 @@ The bot sends an urgent HTML email with the direct product buy link:
 - To stop it anytime, double-click **`stop_background.bat`**.
 
 #### Option B: GitHub Actions 24/7 Cloud Runner (Free, PC can be OFF)
-We have included a pre-configured GitHub Actions workflow at `.github/workflows/check_stock.yml`:
-1. Create a private GitHub repository and push this folder to it.
-2. In GitHub repo Settings -> Secrets and variables -> Actions, add your `GMAIL_USER` and `GMAIL_APP_PASS`.
-3. GitHub will run the stock check automatically on cloud servers every 5 minutes 24/7, sending phone/email alerts even when your laptop is completely turned off!
+We have included the ready-to-use GitHub Actions workflow template at `cloud_setup/check_stock_workflow.yml`:
+1. In your GitHub repository ([github.com/Wandererre/amul-bot](https://github.com/Wandererre/amul-bot)), click **Add file** -> **Create new file**.
+2. Name the file `.github/workflows/check_stock.yml`.
+3. Copy-paste the contents of [`cloud_setup/check_stock_workflow.yml`](cloud_setup/check_stock_workflow.yml) into it and commit.
+4. GitHub will now automatically run the stock check in the cloud every 5 minutes 24/7, sending phone/email alerts even when your laptop is completely turned off!
 
 ---
 
